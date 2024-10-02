@@ -118,14 +118,14 @@ def main():
     pipeline = add_tasks_to_pipeline(**args)
 
     if filename:
-        if os.path.exists(args.filename) and not overwrite:
+        if os.path.exists(filename) and not overwrite:
             raise RuntimeError(
-                f"File {args.filename} already exists; use --overwrite to write anyway."
+                f"File {filename} already exists; use --overwrite to write anyway."
             )
         pipeline.write_to_uri(filename)
         logger.info(
             "Modified pipeline definition YAML file saved at %s.",
-            os.path.realpath(args.filename),
+            os.path.realpath(filename),
         )
     else:
         print("\n", str(pipeline), sep="")
